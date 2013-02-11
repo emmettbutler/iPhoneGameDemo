@@ -158,8 +158,8 @@
 		AAA33D3A16C9AC1300DB815A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAA33D3916C9AC1300DB815A /* RootViewController.m */; };
 		AAA33D3D16C9AC1300DB815A /* HelloWorldLayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAA33D3C16C9AC1300DB815A /* HelloWorldLayer.mm */; };
 		AAA33D4016C9AC1300DB815A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAA33D3F16C9AC1300DB815A /* GLES-Render.mm */; };
-		AAA33D4316C9AC1300DB815A /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA33D4216C9AC1300DB815A /* blocks.png */; };
 		AAA33D4E16C9B28C00DB815A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA33D4D16C9B28C00DB815A /* Default-568h@2x.png */; };
+		AAA33D5016C9B56D00DB815A /* Bagel.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA33D4F16C9B56D00DB815A /* Bagel.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -473,8 +473,8 @@
 		AAA33D3E16C9AC1300DB815A /* GLES-Render.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLES-Render.h"; sourceTree = "<group>"; };
 		AAA33D3F16C9AC1300DB815A /* GLES-Render.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = "GLES-Render.mm"; sourceTree = "<group>"; };
 		AAA33D4116C9AC1300DB815A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
-		AAA33D4216C9AC1300DB815A /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		AAA33D4D16C9B28C00DB815A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		AAA33D4F16C9B56D00DB815A /* Bagel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bagel.png; path = Resources/Bagel.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,6 +551,7 @@
 		AAA33B7116C9AC0F00DB815A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AAA33D4F16C9B56D00DB815A /* Bagel.png */,
 				AAA33B7216C9AC0F00DB815A /* Default.png */,
 				AAA33B7416C9AC0F00DB815A /* fps_images.png */,
 				AAA33B7616C9AC0F00DB815A /* Icon-72.png */,
@@ -561,7 +562,6 @@
 				AAA33B8016C9AC0F00DB815A /* Icon@2x.png */,
 				AAA33B8216C9AC0F00DB815A /* Info.plist */,
 				AAA33B8316C9AC0F00DB815A /* iTunesArtwork */,
-				AAA33D4216C9AC1300DB815A /* blocks.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1065,8 +1065,8 @@
 				AAA33B7F16C9AC0F00DB815A /* Icon.png in Resources */,
 				AAA33B8116C9AC0F00DB815A /* Icon@2x.png in Resources */,
 				AAA33B8416C9AC0F00DB815A /* iTunesArtwork in Resources */,
-				AAA33D4316C9AC1300DB815A /* blocks.png in Resources */,
 				AAA33D4E16C9B28C00DB815A /* Default-568h@2x.png in Resources */,
+				AAA33D5016C9B56D00DB815A /* Bagel.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

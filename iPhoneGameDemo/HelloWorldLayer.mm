@@ -43,7 +43,13 @@
 		
 		uint32 flags = 0;
 		flags += b2DebugDraw::e_shapeBit;
-		m_debugDraw->SetFlags(flags);		
+		m_debugDraw->SetFlags(flags);
+		
+        // Create sprite and add it to the layer
+        CCSprite *ball = [CCSprite spriteWithFile:@"Bagel.png"];
+        ball.position = ccp(100, 100);
+        ball.tag = 1;
+        [self addChild:ball z:9];
 				
 		[self schedule: @selector(tick:)];
 	}
