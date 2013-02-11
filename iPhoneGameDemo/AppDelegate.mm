@@ -97,7 +97,8 @@
 	[viewController setView:glView];
 	
 	// make the View Controller a child of the main window
-	[window addSubview: viewController.view];
+	//[window addSubview: viewController.view];
+    [window setRootViewController:viewController];
 	
 	[window makeKeyAndVisible];
 	
