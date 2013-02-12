@@ -50,6 +50,24 @@
         ball.position = ccp(100, 100);
         ball.tag = 1;
         [self addChild:ball z:9];
+        
+        // Create ball body and shape
+        b2BodyDef ballBodyDef;
+        ballBodyDef.type = b2_dynamicBody;
+        ballBodyDef.position.Set(100/PTM_RATIO, 180/PTM_RATIO);
+        ballBodyDef.userData = ball;
+        b2Body * ballBody = world->CreateBody(&ballBodyDef);
+        
+        b2CircleShape circle;
+        circle.m_radius = ball.contentSize.width/2/PTM_RATIO;
+        
+        b2FixtureDef ballShapeDef;
+        ballShapeDef.shape = &circle;
+        ballShapeDef.density = 10.0f;
+        ballShapeDef.friction = 0.f;
+        ballShapeDef.userData = (void *)1;
+        ballShapeDef.restitution = 0.8f;
+        _ballFixture = ballBody->CreateFixture(&ballShapeDef);
 				
 		[self schedule: @selector(tick:)];
 	}

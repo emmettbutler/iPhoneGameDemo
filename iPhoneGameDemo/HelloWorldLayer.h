@@ -15,6 +15,7 @@
 {
 	b2World* world;
 	GLESDebugDraw *m_debugDraw;
+    b2Fixture *_ballFixture;
 }
 
 +(CCScene *) scene;
