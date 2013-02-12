@@ -44,6 +44,8 @@
 		uint32 flags = 0;
 		flags += b2DebugDraw::e_shapeBit;
 		m_debugDraw->SetFlags(flags);
+        
+        [self buildWalls:screenSize];
 		
         // Create sprite and add it to the layer
         CCSprite *ball = [CCSprite spriteWithFile:@"Bagel.png"];
@@ -61,6 +63,7 @@
         b2CircleShape circle;
         circle.m_radius = ball.contentSize.width/2/PTM_RATIO;
         
+        b2Fixture *_ballFixture;
         b2FixtureDef ballShapeDef;
         ballShapeDef.shape = &circle;
         ballShapeDef.density = 10.0f;
@@ -72,6 +75,28 @@
 		[self schedule: @selector(tick:)];
 	}
 	return self;
+}
+
+-(void) buildWalls:(CGSize)winSize{
+    // Create edges around the entire screen
+    b2Fixture *_bottomFixture;
+    b2Body *_groundBody;
+    b2BodyDef groundBodyDef;
+    groundBodyDef.position.Set(0,0);
+    _groundBody = world->CreateBody(&groundBodyDef);
+    b2PolygonShape groundBox;
+    b2FixtureDef groundBoxDef;
+    groundBoxDef.shape = &groundBox;
+    groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
+    _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
+    groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
+    _groundBody->CreateFixture(&groundBoxDef);
+    groundBox.SetAsEdge(b2Vec2(0, winSize.height/PTM_RATIO), b2Vec2(winSize.width/PTM_RATIO,
+                                                                    winSize.height/PTM_RATIO));
+    _groundBody->CreateFixture(&groundBoxDef);
+    groundBox.SetAsEdge(b2Vec2(winSize.width/PTM_RATIO, winSize.height/PTM_RATIO),
+                        b2Vec2(winSize.width/PTM_RATIO, 0));
+    _groundBody->CreateFixture(&groundBoxDef);
 }
 
 -(void) draw{

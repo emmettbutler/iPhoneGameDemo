@@ -8,11 +8,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "iPhoneGameDemo/HelloWorldLayer.mm"
-         timestampString = "382401748.553082"
+         timestampString = "382402619.914367"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "121"
-         endingLineNumber = "121"
+         startingLineNumber = "146"
+         endingLineNumber = "146"
          landmarkName = "@implementation HelloWorldLayer"
          landmarkType = "3">
       </FileBreakpoint>
