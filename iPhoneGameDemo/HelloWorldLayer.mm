@@ -74,6 +74,25 @@
         
         b2Vec2 force = b2Vec2(38.3f,30.9f);
         ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
+        
+        [[CCSpriteFrameCache sharedSpriteFrameCache] addSpriteFramesWithFile: @"sprites_default.plist"];
+        spritesheet = [CCSpriteBatchNode batchNodeWithFile:@"sprites_default.png"];
+        [self addChild:spritesheet];
+        
+        NSMutableArray *flyAnimFrames = [NSMutableArray array];
+        [flyAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
+        for(int i = 1; i <= 5; ++i){
+            [flyAnimFrames addObject:
+             [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
+              [NSString stringWithFormat:@"ChiDog_Shot_%d.png", i]]];
+        }
+        
+        NSMutableArray *hitAnimFrames = [NSMutableArray array];
+        [hitAnimFrames addObject:
+         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
+        hitAnim = [CCAnimation animationWithFrames:hitAnimFrames delay:0.1f];
+        flyAnim = [CCAnimation animationWithFrames:flyAnimFrames delay:0.9f];
 				
 		[self schedule: @selector(tick:)];
 	}

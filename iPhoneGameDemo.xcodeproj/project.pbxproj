@@ -160,6 +160,8 @@
 		AAA33D4016C9AC1300DB815A /* GLES-Render.mm in Sources */ = {isa = PBXBuildFile; fileRef = AAA33D3F16C9AC1300DB815A /* GLES-Render.mm */; };
 		AAA33D4E16C9B28C00DB815A /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA33D4D16C9B28C00DB815A /* Default-568h@2x.png */; };
 		AAA33D5016C9B56D00DB815A /* Bagel.png in Resources */ = {isa = PBXBuildFile; fileRef = AAA33D4F16C9B56D00DB815A /* Bagel.png */; };
+		AADF9D5F16CB02E2006A3BE2 /* sprites_default.plist in Resources */ = {isa = PBXBuildFile; fileRef = AADF9D5D16CB02E2006A3BE2 /* sprites_default.plist */; };
+		AADF9D6016CB02E2006A3BE2 /* sprites_default.png in Resources */ = {isa = PBXBuildFile; fileRef = AADF9D5E16CB02E2006A3BE2 /* sprites_default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -475,6 +477,8 @@
 		AAA33D4116C9AC1300DB815A /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameConfig.h; sourceTree = "<group>"; };
 		AAA33D4D16C9B28C00DB815A /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		AAA33D4F16C9B56D00DB815A /* Bagel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Bagel.png; path = Resources/Bagel.png; sourceTree = "<group>"; };
+		AADF9D5D16CB02E2006A3BE2 /* sprites_default.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = sprites_default.plist; path = Resources/sprites_default.plist; sourceTree = "<group>"; };
+		AADF9D5E16CB02E2006A3BE2 /* sprites_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sprites_default.png; path = Resources/sprites_default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,6 +555,8 @@
 		AAA33B7116C9AC0F00DB815A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AADF9D5D16CB02E2006A3BE2 /* sprites_default.plist */,
+				AADF9D5E16CB02E2006A3BE2 /* sprites_default.png */,
 				AAA33D4F16C9B56D00DB815A /* Bagel.png */,
 				AAA33B7216C9AC0F00DB815A /* Default.png */,
 				AAA33B7416C9AC0F00DB815A /* fps_images.png */,
@@ -1067,6 +1073,8 @@
 				AAA33B8416C9AC0F00DB815A /* iTunesArtwork in Resources */,
 				AAA33D4E16C9B28C00DB815A /* Default-568h@2x.png in Resources */,
 				AAA33D5016C9B56D00DB815A /* Bagel.png in Resources */,
+				AADF9D5F16CB02E2006A3BE2 /* sprites_default.plist in Resources */,
+				AADF9D6016CB02E2006A3BE2 /* sprites_default.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1306,6 +1314,7 @@
 				AAA33D4816C9AC1300DB815A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
