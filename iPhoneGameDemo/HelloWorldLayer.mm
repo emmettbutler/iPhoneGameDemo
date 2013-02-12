@@ -11,6 +11,7 @@
 #import "HelloWorldLayer.h"
 
 #define PTM_RATIO 32
+#define VELOCITY_MULT 35
 
 @implementation HelloWorldLayer
 
@@ -19,6 +20,46 @@
 	HelloWorldLayer *layer = [HelloWorldLayer node];
 	[scene addChild: layer];
 	return scene;
+}
+
+-(void)putBox:(CGPoint)location xVel:(float)xVel yVel:(float)yVel{
+    CCLOG(@"Add sprite %0.2f x %02.f",location.x,location.y);
+    
+    CCSprite *_box = [CCSprite spriteWithSpriteFrameName:@"ChiDog.png"];
+    
+    location.y += 18;
+    _box.position = ccp( location.x, location.y);
+    _box.tag = 2;
+    
+    _hitAction = [CCAnimate actionWithAnimation:hitAnim restoreOriginalFrame:YES];
+    _flyAction = [CCRepeatForever actionWithAction:
+                      [CCAnimate actionWithAnimation:flyAnim restoreOriginalFrame:NO]];
+    
+    [_box runAction:_flyAction];
+    [spritesheet addChild:_box];
+    
+    b2Body *boxBody;
+    b2BodyDef boxBodyDef;
+    boxBodyDef.type = b2_dynamicBody;
+    boxBodyDef.position.Set(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    boxBodyDef.userData = _box;
+    boxBody = world->CreateBody(&boxBodyDef);
+    
+    b2PolygonShape boxShape;
+    boxShape.SetAsBox(_box.contentSize.width/PTM_RATIO/2,
+                      _box.contentSize.height/PTM_RATIO/2);
+    
+    b2Fixture *boxFixture;
+    b2FixtureDef boxShapeDef;
+    boxShapeDef.shape = &boxShape;
+    boxShapeDef.density = 10.0f;
+    boxShapeDef.friction= 0.4f;
+    boxShapeDef.restitution = 0.9f;
+    boxShapeDef.userData = (void *)2;
+    boxFixture = boxBody->CreateFixture(&boxShapeDef);
+    
+    b2Vec2 force = b2Vec2(xVel, yVel);
+    boxBody->ApplyLinearImpulse(force, boxBodyDef.position);
 }
 
 -(id) init
@@ -92,7 +133,11 @@
         [hitAnimFrames addObject:
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
         hitAnim = [CCAnimation animationWithFrames:hitAnimFrames delay:0.1f];
-        flyAnim = [CCAnimation animationWithFrames:flyAnimFrames delay:0.9f];
+        flyAnim = [CCAnimation animationWithFrames:flyAnimFrames delay:0.12f];
+        
+        for(float i = 0.0f; i < 2*M_PI; i += M_PI/8){
+            [self putBox:CGPointMake(screenSize.width/2, screenSize.height/2) xVel:VELOCITY_MULT*sin(i) yVel:VELOCITY_MULT*cos(i)];
+        }
 				
 		[self schedule: @selector(tick:)];
 	}
