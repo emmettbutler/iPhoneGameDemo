@@ -71,6 +71,9 @@
         ballShapeDef.userData = (void *)1;
         ballShapeDef.restitution = 0.8f;
         _ballFixture = ballBody->CreateFixture(&ballShapeDef);
+        
+        b2Vec2 force = b2Vec2(38.3f,30.9f);
+        ballBody->ApplyLinearImpulse(force, ballBodyDef.position);
 				
 		[self schedule: @selector(tick:)];
 	}
