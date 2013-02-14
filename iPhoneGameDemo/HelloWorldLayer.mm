@@ -27,9 +27,8 @@
     
     CCSprite *_box = [CCSprite spriteWithSpriteFrameName:@"ChiDog.png"];
     
-    location.y += 18;
     _box.position = ccp( location.x, location.y);
-    _box.tag = 2;
+    _box.tag = TBOX;
     
     _hitAction = [CCAnimate actionWithAnimation:hitAnim restoreOriginalFrame:YES];
     _flyAction = [CCRepeatForever actionWithAction:
@@ -55,7 +54,6 @@
     boxShapeDef.density = 10.0f;
     boxShapeDef.friction= 0.4f;
     boxShapeDef.restitution = 0.9f;
-    boxShapeDef.userData = (void *)2;
     boxShapeDef.filter.categoryBits = BOX;
     boxShapeDef.filter.maskBits = BALL | BOUNDARY;
     boxFixture = boxBody->CreateFixture(&boxShapeDef);
@@ -93,7 +91,7 @@
         // Create sprite and add it to the layer
         CCSprite *ball = [CCSprite spriteWithFile:@"Bagel.png"];
         ball.position = ccp(100, 100);
-        ball.tag = 1;
+        ball.tag = TBALL;
         [self addChild:ball z:9];
         
         // Create ball body and shape
@@ -111,7 +109,6 @@
         ballShapeDef.shape = &circle;
         ballShapeDef.density = 10.0f;
         ballShapeDef.friction = 0.f;
-        ballShapeDef.userData = (void *)1;
         ballShapeDef.restitution = 0.8f;
         ballShapeDef.filter.categoryBits = BALL;
 	    ballShapeDef.filter.maskBits = BOX | BOUNDARY;
@@ -203,6 +200,16 @@
 		CGPoint location = [touch locationInView: [touch view]];
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
+        
+        for (b2Body* body = world->GetBodyList(); body; body = body->GetNext()){
+            if (body->GetUserData() != NULL) {
+                CCSprite *sprite = (CCSprite *)body->GetUserData();
+                if(sprite.tag == TBOX){
+                    world->DestroyBody(body);
+                    [sprite removeFromParentAndCleanup:YES];
+                }
+            }
+        }
         
         for(float i = 0.0f; i < 2*M_PI; i += M_PI/8){
             [self putBox:location xVel:VELOCITY_MULT*sin(i) yVel:VELOCITY_MULT*cos(i)];

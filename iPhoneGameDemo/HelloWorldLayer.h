@@ -24,6 +24,10 @@
     	BOX =     0x0002,
     	BALL =     0x0004,
   	};
+    
+    enum _tags{
+        TBOX, TBALL
+    };
 }
 
 +(CCScene *) scene;
