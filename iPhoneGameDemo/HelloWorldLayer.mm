@@ -160,6 +160,7 @@
     b2PolygonShape groundBox;
     b2FixtureDef groundBoxDef;
     groundBoxDef.shape = &groundBox;
+    groundBoxDef.userData = (void*)0;
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
     _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
@@ -200,11 +201,26 @@
 	}
     
     std::set<b2Body*>::iterator pos;
-	for(pos = contactListener->contacts.begin();
-		pos != contactListener->contacts.end(); ++pos)
-	{
-        // put collision detection stuff here
+	for(pos = contactListener->contacts.begin(); pos != contactListener->contacts.end(); ++pos){
+        b2Body *body = *pos;
+        
+		CCNode *contactNode = (CCNode*)body->GetUserData();
+        CCSprite *sprite = (CCSprite *)body->GetUserData();
+        CGPoint position = contactNode.position;
+        
+        if(sprite.tag == TBOX){
+            CCParticleSun* explosion = [[CCParticleSun alloc] initWithTotalParticles:40];
+            explosion.autoRemoveOnFinish = YES;
+            explosion.startSize = 1.0f;
+            explosion.speed = 70.0f;
+            explosion.anchorPoint = ccp(0.5f,0.5f);
+            explosion.position = position;
+            explosion.duration = 0.2f;
+            [self addChild:explosion z:11];
+            [explosion release];
+        }
     }
+    contactListener->contacts.clear();
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{

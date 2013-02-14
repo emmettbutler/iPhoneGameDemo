@@ -8,7 +8,8 @@
 	b2World* world;
 	GLESDebugDraw *m_debugDraw;
     CCSpriteBatchNode *spritesheet;
-    CCAction *_flyAction, *_hitAction;
+    CCAction *_flyAction;
+    CCFiniteTimeAction *_hitAction;
     CCAnimation *flyAnim, *hitAnim;
     MyContactListener *contactListener;
     
