@@ -18,6 +18,12 @@
     CCSpriteBatchNode *spritesheet;
     CCAction *_flyAction, *_hitAction;
     CCAnimation *flyAnim, *hitAnim;
+    
+    enum _entityCategory {
+		BOUNDARY = 0x0001,
+    	BOX =     0x0002,
+    	BALL =     0x0004,
+  	};
 }
 
 +(CCScene *) scene;

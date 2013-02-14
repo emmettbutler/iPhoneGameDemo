@@ -56,6 +56,8 @@
     boxShapeDef.friction= 0.4f;
     boxShapeDef.restitution = 0.9f;
     boxShapeDef.userData = (void *)2;
+    boxShapeDef.filter.categoryBits = BOX;
+    boxShapeDef.filter.maskBits = BALL | BOUNDARY;
     boxFixture = boxBody->CreateFixture(&boxShapeDef);
     
     b2Vec2 force = b2Vec2(xVel, yVel);
@@ -111,6 +113,8 @@
         ballShapeDef.friction = 0.f;
         ballShapeDef.userData = (void *)1;
         ballShapeDef.restitution = 0.8f;
+        ballShapeDef.filter.categoryBits = BALL;
+	    ballShapeDef.filter.maskBits = BOX | BOUNDARY;
         _ballFixture = ballBody->CreateFixture(&ballShapeDef);
         
         b2Vec2 force = b2Vec2(38.3f,30.9f);
