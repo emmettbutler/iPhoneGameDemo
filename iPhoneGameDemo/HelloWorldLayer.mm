@@ -73,7 +73,9 @@
         
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"Gravity" fontName:@"Marker Felt" fontSize:18.0];
         CCMenuItem *gravityButton = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(toggleGravity)];
-		CCMenu *menu = [CCMenu menuWithItems:gravityButton, nil];
+        label = [CCLabelTTF labelWithString:@"Debug draw" fontName:@"Marker Felt" fontSize:18.0];
+        CCMenuItem *debug = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(debugDraw)];
+		CCMenu *menu = [CCMenu menuWithItems:gravityButton, debug, nil];
         [menu alignItemsVertically];
         [menu setPosition:ccp(60, screenSize.height-65)];
         [self addChild:menu];
@@ -204,6 +206,23 @@
         gravity = b2Vec2(0,-30);
     }
     world->SetGravity(gravity);
+}
+
+-(void)debugDraw{
+    // Debug Draw functions
+    if(!m_debugDraw){
+        m_debugDraw = new GLESDebugDraw( PTM_RATIO );
+        uint32 flags = 0;
+        flags += b2DebugDraw::e_shapeBit;
+        flags += b2DebugDraw::e_jointBit;
+        flags += b2DebugDraw::e_aabbBit;
+        flags += b2DebugDraw::e_pairBit;
+        flags += b2DebugDraw::e_centerOfMassBit;
+        m_debugDraw->SetFlags(flags);
+    } else {
+        m_debugDraw = nil;
+    }
+    world->SetDebugDraw(m_debugDraw);
 }
 
 -(void) tick: (ccTime) dt{
