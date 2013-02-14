@@ -30,9 +30,9 @@
     _box.position = ccp( location.x, location.y);
     _box.tag = TBOX;
     
-    _hitAction = [CCAnimate actionWithAnimation:hitAnim restoreOriginalFrame:YES];
-    _flyAction = [CCRepeatForever actionWithAction:
-                      [CCAnimate actionWithAnimation:flyAnim restoreOriginalFrame:NO]];
+    _hitAction = [[CCAnimate actionWithAnimation:hitAnim restoreOriginalFrame:YES] retain];
+    _flyAction = [[CCRepeatForever actionWithAction:
+                      [CCAnimate actionWithAnimation:flyAnim restoreOriginalFrame:NO]] retain];
     
     [_box runAction:_flyAction];
     [spritesheet addChild:_box];
@@ -126,15 +126,14 @@
         NSMutableArray *flyAnimFrames = [NSMutableArray array];
         [flyAnimFrames addObject:
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
+        
+        // animation of arbitrary length to play on collisions
+        NSMutableArray *hitAnimFrames = [NSMutableArray array];
         for(int i = 1; i <= 5; ++i){
-            [flyAnimFrames addObject:
+            [hitAnimFrames addObject:
              [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:
               [NSString stringWithFormat:@"ChiDog_Shot_%d.png", i]]];
         }
-        
-        NSMutableArray *hitAnimFrames = [NSMutableArray array];
-        [hitAnimFrames addObject:
-         [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
         hitAnim = [[CCAnimation animationWithFrames:hitAnimFrames delay:0.1f] retain];
         flyAnim = [[CCAnimation animationWithFrames:flyAnimFrames delay:0.12f] retain];
         
@@ -185,6 +184,12 @@
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
+-(void)runBoxLoop:(id)sender{
+    CCSprite *sprite = (CCSprite *)sender;
+    _flyAction = [CCRepeatForever actionWithAction:
+                      [CCAnimate actionWithAnimation:flyAnim restoreOriginalFrame:NO]];
+    [sprite runAction: _flyAction];
+}
 
 -(void) tick: (ccTime) dt{
 	int32 velocityIterations = 8;
@@ -209,6 +214,11 @@
         CGPoint position = contactNode.position;
         
         if(sprite.tag == TBOX){
+            [sprite stopAllActions];
+            [sprite runAction:[CCSequence actions:_hitAction,
+                               [CCCallFuncN actionWithTarget:self selector:@selector(runBoxLoop:)],nil]];
+
+            
             CCParticleSun* explosion = [[CCParticleSun alloc] initWithTotalParticles:40];
             explosion.autoRemoveOnFinish = YES;
             explosion.startSize = 1.0f;
