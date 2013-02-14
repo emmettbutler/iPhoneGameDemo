@@ -70,8 +70,14 @@
 		self.isAccelerometerEnabled = YES;
 		
 		CGSize screenSize = [CCDirector sharedDirector].winSize;
-		
-		b2Vec2 gravity;
+        
+        CCLabelTTF *label = [CCLabelTTF labelWithString:@"Gravity" fontName:@"Marker Felt" fontSize:18.0];
+        CCMenuItem *gravityButton = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(toggleGravity)];
+		CCMenu *menu = [CCMenu menuWithItems:gravityButton, nil];
+        [menu alignItemsVertically];
+        [menu setPosition:ccp(60, screenSize.height-65)];
+        [self addChild:menu];
+        
 		gravity.Set(0.0f, -10.0f);
 		
 		bool doSleep = true;
@@ -189,6 +195,15 @@
     _flyAction = [CCRepeatForever actionWithAction:
                       [CCAnimate actionWithAnimation:flyAnim restoreOriginalFrame:NO]];
     [sprite runAction: _flyAction];
+}
+
+-(void)toggleGravity{
+    if(gravity.y < 0){
+        gravity = b2Vec2(0,0);
+    } else {
+        gravity = b2Vec2(0,-30);
+    }
+    world->SetGravity(gravity);
 }
 
 -(void) tick: (ccTime) dt{

@@ -11,6 +11,7 @@
     CCAction *_flyAction;
     CCFiniteTimeAction *_hitAction;
     CCAnimation *flyAnim, *hitAnim;
+    b2Vec2 gravity;
     MyContactListener *contactListener;
     
     enum _entityCategory {
