@@ -160,7 +160,7 @@
     b2PolygonShape groundBox;
     b2FixtureDef groundBoxDef;
     groundBoxDef.shape = &groundBox;
-    groundBoxDef.userData = (void*)0;
+    groundBoxDef.userData = (void*)999;
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(winSize.width/PTM_RATIO, 0));
     _bottomFixture = _groundBody->CreateFixture(&groundBoxDef);
     groundBox.SetAsEdge(b2Vec2(0,0), b2Vec2(0, winSize.height/PTM_RATIO));
