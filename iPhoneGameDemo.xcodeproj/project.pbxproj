@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AA77E10816CD58930068734F /* TitleScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA77E10716CD58930068734F /* TitleScene.mm */; };
 		AA77E10C16CD5B2C0068734F /* bliss.png in Resources */ = {isa = PBXBuildFile; fileRef = AA77E10B16CD5B2C0068734F /* bliss.png */; };
+		AA77E10F16CD5DB40068734F /* MyContactListener.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA77E10E16CD5DB40068734F /* MyContactListener.mm */; };
 		AAA33B6116C9AC0F00DB815A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6016C9AC0F00DB815A /* QuartzCore.framework */; };
 		AAA33B6316C9AC0F00DB815A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6216C9AC0F00DB815A /* OpenGLES.framework */; };
 		AAA33B6516C9AC0F00DB815A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6416C9AC0F00DB815A /* OpenAL.framework */; };
@@ -170,6 +171,8 @@
 		AA77E10716CD58930068734F /* TitleScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleScene.mm; sourceTree = "<group>"; };
 		AA77E10A16CD58A20068734F /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
 		AA77E10B16CD5B2C0068734F /* bliss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bliss.png; path = Resources/bliss.png; sourceTree = "<group>"; };
+		AA77E10D16CD5DB40068734F /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyContactListener.h; sourceTree = "<group>"; };
+		AA77E10E16CD5DB40068734F /* MyContactListener.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = MyContactListener.mm; sourceTree = "<group>"; };
 		AAA33B5C16C9AC0F00DB815A /* iPhoneGameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneGameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA33B6016C9AC0F00DB815A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAA33B6216C9AC0F00DB815A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -547,6 +550,8 @@
 				AAA33D3916C9AC1300DB815A /* RootViewController.m */,
 				AAA33D3B16C9AC1300DB815A /* HelloWorldLayer.h */,
 				AAA33D3C16C9AC1300DB815A /* HelloWorldLayer.mm */,
+				AA77E10D16CD5DB40068734F /* MyContactListener.h */,
+				AA77E10E16CD5DB40068734F /* MyContactListener.mm */,
 				AA77E10716CD58930068734F /* TitleScene.mm */,
 				AA77E10A16CD58A20068734F /* TitleScene.h */,
 				AAA33D3E16C9AC1300DB815A /* GLES-Render.h */,
@@ -1229,6 +1234,7 @@
 				AAA33D3D16C9AC1300DB815A /* HelloWorldLayer.mm in Sources */,
 				AAA33D4016C9AC1300DB815A /* GLES-Render.mm in Sources */,
 				AA77E10816CD58930068734F /* TitleScene.mm in Sources */,
+				AA77E10F16CD5DB40068734F /* MyContactListener.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,7 @@
 #import "HelloWorldLayer.h"
 
 #define PTM_RATIO 32
-#define VELOCITY_MULT 35
+#define VELOCITY_MULT 115
 
 @implementation HelloWorldLayer
 
@@ -54,6 +54,7 @@
     boxShapeDef.density = 10.0f;
     boxShapeDef.friction= 0.4f;
     boxShapeDef.restitution = 0.9f;
+    boxShapeDef.userData = (void *)TBOX;
     boxShapeDef.filter.categoryBits = BOX;
     boxShapeDef.filter.maskBits = BALL | BOUNDARY;
     boxFixture = boxBody->CreateFixture(&boxShapeDef);
@@ -110,6 +111,7 @@
         ballShapeDef.density = 10.0f;
         ballShapeDef.friction = 0.f;
         ballShapeDef.restitution = 0.8f;
+        ballShapeDef.userData = (void *)TBALL;
         ballShapeDef.filter.categoryBits = BALL;
 	    ballShapeDef.filter.maskBits = BOX | BOUNDARY;
         _ballFixture = ballBody->CreateFixture(&ballShapeDef);
@@ -139,6 +141,9 @@
         for(float i = 0.0f; i < 2*M_PI; i += M_PI/8){
             [self putBox:CGPointMake(screenSize.width/2, screenSize.height/2) xVel:VELOCITY_MULT*sin(i) yVel:VELOCITY_MULT*cos(i)];
         }
+        
+        contactListener = new MyContactListener();
+		world->SetContactListener(contactListener);
 				
 		[self schedule: @selector(tick:)];
 	}
@@ -193,6 +198,13 @@
 			myActor.rotation = -1 * CC_RADIANS_TO_DEGREES(b->GetAngle());
 		}	
 	}
+    
+    std::set<b2Body*>::iterator pos;
+	for(pos = contactListener->contacts.begin();
+		pos != contactListener->contacts.end(); ++pos)
+	{
+        // put collision detection stuff here
+    }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
