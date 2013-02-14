@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AA77E10816CD58930068734F /* TitleScene.mm in Sources */ = {isa = PBXBuildFile; fileRef = AA77E10716CD58930068734F /* TitleScene.mm */; };
+		AA77E10C16CD5B2C0068734F /* bliss.png in Resources */ = {isa = PBXBuildFile; fileRef = AA77E10B16CD5B2C0068734F /* bliss.png */; };
 		AAA33B6116C9AC0F00DB815A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6016C9AC0F00DB815A /* QuartzCore.framework */; };
 		AAA33B6316C9AC0F00DB815A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6216C9AC0F00DB815A /* OpenGLES.framework */; };
 		AAA33B6516C9AC0F00DB815A /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAA33B6416C9AC0F00DB815A /* OpenAL.framework */; };
@@ -165,6 +167,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AA77E10716CD58930068734F /* TitleScene.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TitleScene.mm; sourceTree = "<group>"; };
+		AA77E10A16CD58A20068734F /* TitleScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TitleScene.h; sourceTree = "<group>"; };
+		AA77E10B16CD5B2C0068734F /* bliss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bliss.png; path = Resources/bliss.png; sourceTree = "<group>"; };
 		AAA33B5C16C9AC0F00DB815A /* iPhoneGameDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iPhoneGameDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAA33B6016C9AC0F00DB815A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AAA33B6216C9AC0F00DB815A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -542,6 +547,8 @@
 				AAA33D3916C9AC1300DB815A /* RootViewController.m */,
 				AAA33D3B16C9AC1300DB815A /* HelloWorldLayer.h */,
 				AAA33D3C16C9AC1300DB815A /* HelloWorldLayer.mm */,
+				AA77E10716CD58930068734F /* TitleScene.mm */,
+				AA77E10A16CD58A20068734F /* TitleScene.h */,
 				AAA33D3E16C9AC1300DB815A /* GLES-Render.h */,
 				AAA33D3F16C9AC1300DB815A /* GLES-Render.mm */,
 				AAA33D4116C9AC1300DB815A /* GameConfig.h */,
@@ -555,6 +562,7 @@
 		AAA33B7116C9AC0F00DB815A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				AA77E10B16CD5B2C0068734F /* bliss.png */,
 				AADF9D5D16CB02E2006A3BE2 /* sprites_default.plist */,
 				AADF9D5E16CB02E2006A3BE2 /* sprites_default.png */,
 				AAA33D4F16C9B56D00DB815A /* Bagel.png */,
@@ -1075,6 +1083,7 @@
 				AAA33D5016C9B56D00DB815A /* Bagel.png in Resources */,
 				AADF9D5F16CB02E2006A3BE2 /* sprites_default.plist in Resources */,
 				AADF9D6016CB02E2006A3BE2 /* sprites_default.png in Resources */,
+				AA77E10C16CD5B2C0068734F /* bliss.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,6 +1228,7 @@
 				AAA33D3A16C9AC1300DB815A /* RootViewController.m in Sources */,
 				AAA33D3D16C9AC1300DB815A /* HelloWorldLayer.mm in Sources */,
 				AAA33D4016C9AC1300DB815A /* GLES-Render.mm in Sources */,
+				AA77E10816CD58930068734F /* TitleScene.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
