@@ -136,8 +136,8 @@
         NSMutableArray *hitAnimFrames = [NSMutableArray array];
         [hitAnimFrames addObject:
          [[CCSpriteFrameCache sharedSpriteFrameCache] spriteFrameByName:@"ChiDog.png"]];
-        hitAnim = [CCAnimation animationWithFrames:hitAnimFrames delay:0.1f];
-        flyAnim = [CCAnimation animationWithFrames:flyAnimFrames delay:0.12f];
+        hitAnim = [[CCAnimation animationWithFrames:hitAnimFrames delay:0.1f] retain];
+        flyAnim = [[CCAnimation animationWithFrames:flyAnimFrames delay:0.12f] retain];
         
         for(float i = 0.0f; i < 2*M_PI; i += M_PI/8){
             [self putBox:CGPointMake(screenSize.width/2, screenSize.height/2) xVel:VELOCITY_MULT*sin(i) yVel:VELOCITY_MULT*cos(i)];
@@ -203,6 +203,10 @@
 		CGPoint location = [touch locationInView: [touch view]];
 		
 		location = [[CCDirector sharedDirector] convertToGL: location];
+        
+        for(float i = 0.0f; i < 2*M_PI; i += M_PI/8){
+            [self putBox:location xVel:VELOCITY_MULT*sin(i) yVel:VELOCITY_MULT*cos(i)];
+        }
 	}
 }
 
