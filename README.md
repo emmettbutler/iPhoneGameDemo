@@ -16,9 +16,11 @@ How to get up and running with this project
 * Download and install Git from http://git-scm.com/download/mac
 * Download and install Zwoptex from http://www.zwopple.com/zwoptex/
 * Open Terminal and type
+
     mkdir git
     cd git
     git clone https://github.com/emmett9001/iPhoneGameDemo.git
+
 * Open Finder, navigate to <yourname>/git/iPhoneGameDemo
 * Open iPhoneGameDemo.git with XCode
 * In the top left menu, select iPhone 6.0 simulator
