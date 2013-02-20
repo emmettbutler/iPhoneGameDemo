@@ -23,7 +23,7 @@ Basics of iOS Development
 Read slides on your own
 -----------------------
 
-http://github.com/emmett9001/ios-slides
+http://github.com/emmett9001/iPhoneGameDemo
 
 http://emmettbutler.com/basic-ios-slides
 

@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.9.1: http://docutils.sourceforge.net/" />
+<meta name="version" content="S5 1.1" />
+<title>Basics of iPhone Game Development</title>
+<meta name="author" content="Emmett Butler" />
+<meta name="date" content="2013-02-20" />
+<style type="text/css">
+
+.highlight .hll { background-color: #333333 }
+.highlight  { background: #111111; color: #ffffff }
+.highlight .c { color: #008800; font-style: italic; background-color: #0f140f } /* Comment */
+.highlight .err { color: #ffffff } /* Error */
+.highlight .g { color: #ffffff } /* Generic */
+.highlight .k { color: #fb660a; font-weight: bold } /* Keyword */
+.highlight .l { color: #ffffff } /* Literal */
+.highlight .n { color: #ffffff } /* Name */
+.highlight .o { color: #ffffff } /* Operator */
+.highlight .x { color: #ffffff } /* Other */
+.highlight .p { color: #ffffff } /* Punctuation */
+.highlight .cm { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Multiline */
+.highlight .cp { color: #ff0007; font-weight: bold; font-style: italic; background-color: #0f140f } /* Comment.Preproc */
+.highlight .c1 { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Single */
+.highlight .cs { color: #008800; font-style: italic; background-color: #0f140f } /* Comment.Special */
+.highlight .gd { color: #ffffff } /* Generic.Deleted */
+.highlight .ge { color: #ffffff } /* Generic.Emph */
+.highlight .gr { color: #ffffff } /* Generic.Error */
+.highlight .gh { color: #ffffff; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #ffffff } /* Generic.Inserted */
+.highlight .go { color: #444444; background-color: #222222 } /* Generic.Output */
+.highlight .gp { color: #ffffff } /* Generic.Prompt */
+.highlight .gs { color: #ffffff } /* Generic.Strong */
+.highlight .gu { color: #ffffff; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #ffffff } /* Generic.Traceback */
+.highlight .kc { color: #fb660a; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #fb660a; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #fb660a; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #fb660a } /* Keyword.Pseudo */
+.highlight .kr { color: #fb660a; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #cdcaa9; font-weight: bold } /* Keyword.Type */
+.highlight .ld { color: #ffffff } /* Literal.Date */
+.highlight .m { color: #0086f7; font-weight: bold } /* Literal.Number */
+.highlight .s { color: #0086d2 } /* Literal.String */
+.highlight .na { color: #ff0086; font-weight: bold } /* Name.Attribute */
+.highlight .nb { color: #ffffff } /* Name.Builtin */
+.highlight .nc { color: #ffffff } /* Name.Class */
+.highlight .no { color: #0086d2 } /* Name.Constant */
+.highlight .nd { color: #ffffff } /* Name.Decorator */
+.highlight .ni { color: #ffffff } /* Name.Entity */
+.highlight .ne { color: #ffffff } /* Name.Exception */
+.highlight .nf { color: #ff0086; font-weight: bold } /* Name.Function */
+.highlight .nl { color: #ffffff } /* Name.Label */
+.highlight .nn { color: #ffffff } /* Name.Namespace */
+.highlight .nx { color: #ffffff } /* Name.Other */
+.highlight .py { color: #ffffff } /* Name.Property */
+.highlight .nt { color: #fb660a; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #fb660a } /* Name.Variable */
+.highlight .ow { color: #ffffff } /* Operator.Word */
+.highlight .w { color: #888888 } /* Text.Whitespace */
+.highlight .mf { color: #0086f7; font-weight: bold } /* Literal.Number.Float */
+.highlight .mh { color: #0086f7; font-weight: bold } /* Literal.Number.Hex */
+.highlight .mi { color: #0086f7; font-weight: bold } /* Literal.Number.Integer */
+.highlight .mo { color: #0086f7; font-weight: bold } /* Literal.Number.Oct */
+.highlight .sb { color: #0086d2 } /* Literal.String.Backtick */
+.highlight .sc { color: #0086d2 } /* Literal.String.Char */
+.highlight .sd { color: #0086d2 } /* Literal.String.Doc */
+.highlight .s2 { color: #0086d2 } /* Literal.String.Double */
+.highlight .se { color: #0086d2 } /* Literal.String.Escape */
+.highlight .sh { color: #0086d2 } /* Literal.String.Heredoc */
+.highlight .si { color: #0086d2 } /* Literal.String.Interpol */
+.highlight .sx { color: #0086d2 } /* Literal.String.Other */
+.highlight .sr { color: #0086d2 } /* Literal.String.Regex */
+.highlight .s1 { color: #0086d2 } /* Literal.String.Single */
+.highlight .ss { color: #0086d2 } /* Literal.String.Symbol */
+.highlight .bp { color: #ffffff } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #fb660a } /* Name.Variable.Class */
+.highlight .vg { color: #fb660a } /* Name.Variable.Global */
+.highlight .vi { color: #fb660a } /* Name.Variable.Instance */
+.highlight .il { color: #0086f7; font-weight: bold } /* Literal.Number.Integer.Long */
+
+</style>
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+<!-- style sheet links -->
+<script src="ui/small-black/slides.js" type="text/javascript"></script>
+<link rel="stylesheet" href="ui/small-black/slides.css"
+      type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/small-black/outline.css"
+      type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/small-black/print.css"
+      type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/small-black/opera.css"
+      type="text/css" media="projection" id="operaFix" />
+
+<style type="text/css">
+#currentSlide {display: none;}
+</style>
+</head>
+<body>
+<div class="layout">
+<div id="controls"></div>
+<div id="currentSlide"></div>
+<div id="header">
+
+</div>
+<div id="footer">
+<h1>Basics of iPhone Game Development</h1>
+
+</div>
+</div>
+<div class="presentation">
+<div class="slide" id="slide0">
+<h1 class="title">Basics of iPhone Game Development</h1>
+<table class="docinfo" frame="void" rules="none">
+<col class="docinfo-name" />
+<col class="docinfo-content" />
+<tbody valign="top">
+<tr><th class="docinfo-name">Author:</th>
+<td>Emmett Butler</td></tr>
+<tr><th class="docinfo-name">Date:</th>
+<td>2013-02-20</td></tr>
+</tbody>
+</table>
+<!-- Definitions of interpreted text roles (classes) for S5/HTML data. -->
+<!-- This data file has been placed in the public domain. -->
+<!-- Colours
+======= -->
+<!-- Text Sizes
+========== -->
+<!-- Display in Slides (Presentation Mode) Only
+========================================== -->
+<!-- Display in Outline Mode Only
+============================ -->
+<!-- Display in Print Only
+===================== -->
+<!-- Display in Handout Mode Only
+============================ -->
+<!-- Incremental Display
+=================== -->
+<!-- This document is copyright Emmett Butler -->
+<div class="handout container">
+<p><strong>How this was made</strong></p>
+<p>This document was created using <a class="reference external" href="http://docutils.sourceforge.net/">Docutils</a>/<a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a> and <a class="reference external" href="http://meyerweb.com/eric/tools/s5/">S5</a>.</p>
+</div>
+
+</div>
+<div class="slide" id="read-slides-on-your-own">
+<h1>Read slides on your own</h1>
+<p><a class="reference external" href="http://github.com/emmett9001/iPhoneGameDemo">http://github.com/emmett9001/iPhoneGameDemo</a></p>
+<p><a class="reference external" href="http://emmettbutler.com/basic-ios-slides/games.html">http://emmettbutler.com/basic-ios-slides/games.html</a></p>
+</div>
+<div class="slide" id="meta">
+<h1>Meta</h1>
+<p><strong>Me</strong>: I'm a Python devotee who learned Objective-C out of necessity. I'm also skilled in Javascript, C/C++ and OpenGL. I love video games and elegant code.</p>
+<p><strong>Professionally</strong>: I've worked part- and full-time at Parsely since 2011, concentrating primarily on web scraping and semantic metadata (see <a class="reference external" href="http://schema.to">http://schema.to</a>). With my game design partner, I shipped Heads Up Hot Dogs for iOS, published by [adult swim] Games, in October 2012.</p>
+<p><strong>E-mail me</strong>: <a class="reference external" href="mailto:emmett.butler321&#64;gmail.com">emmett.butler321&#64;gmail.com</a></p>
+<p><strong>My website</strong>: <a class="reference external" href="http://emmettbutler.com">emmettbutler.com</a></p>
+<p><strong>Follow me on Twitter</strong>: <a class="reference external" href="http://twitter.com/emmett9001">emmett9001</a></p>
+<p><strong>Follow me on Github</strong>: <a class="reference external" href="http://github.com/emmett9001">github</a></p>
+</div>
+<div class="slide" id="ios-flyover">
+<h1>iOS Flyover</h1>
+<p class="incremental">Development environment: Mac exclusive, XCode all the way down</p>
+<p class="incremental">Language of choice: Objective-C, C, C++</p>
+<p class="incremental">Frameworks: Foundation, UIKit, OpenGL ES</p>
+</div>
+<div class="slide" id="the-zen-of-objective-c">
+<h1>The &quot;Zen&quot; of Objective-C?</h1>
+<p class="incremental">NeXT/Apple's response to object-orientation</p>
+<p class="incremental">Layer atop C and C++ - superset</p>
+<dl class="incremental docutils">
+<dt>Adds</dt>
+<dd><ul class="first last simple">
+<li>classes, inheritance</li>
+<li>runtime reflection</li>
+<li>Smalltalk-style message passing</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="slide" id="iphone-game-technologies">
+<h1>iPhone Game Technologies</h1>
+<p><strong>Cocos2D</strong>: 2D sprite animation and time-based action system</p>
+<p><strong>Box2D</strong>: 2D rigid body dynamics simulation (aka physics engine)</p>
+<p><strong>Zwoptex</strong>: Free tool for packing sprite images into spritesheets</p>
+</div>
+<div class="slide" id="cocos2d">
+<h1>Cocos2D</h1>
+<p class="incremental">Object-oriented library facilitating common game-related graphics needs</p>
+<p class="incremental">Sprite animation, screen transitions, time-based actions and particle effects are the most prominent</p>
+<p class="incremental">Built on OpenGL ES (handles the actual drawing)</p>
+<p class="incremental">Intergrates box2d</p>
+<p class="incremental">Free and open-source(!!) - but read the license</p>
+</div>
+<div class="slide" id="box2d">
+<h1>Box2D</h1>
+<p class="incremental">State machine (&quot;world&quot;) with input and output &quot;ports&quot;</p>
+<p class="incremental">Implemented as a C++ library - this works since Objective-C is a <em>strict superset</em> of C++</p>
+<p class="incremental">Main purpose is to perform phyiscal calculations very fast</p>
+<p class="incremental">Contains modules for drawing the simulated objects to the screen (DebugDraw)</p>
+<p class="incremental">Also free and open-source</p>
+</div>
+<div class="slide" id="cocos2d-api-overview">
+<h1>Cocos2D API Overview</h1>
+<p class="incremental">CCDirector is the main controller singleton - handles scenes and OpenGL communications</p>
+<p class="incremental">A game (handled by CCDirector) consists of one or more CCScenes</p>
+<p class="incremental">Scenes consist of one or more CCLayers</p>
+<p class="incremental">Layers consist of one or more CCSprites</p>
+<p class="incremental"><strong>Generalization</strong>: All of these classes (with the exception of CCDirector) are subclasses of CCNode.</p>
+</div>
+<div class="slide" id="scene-graph">
+<h1>Scene Graph</h1>
+<img alt="img/scenegraph.png" src="img/scenegraph.png" />
+<p>Scenes transition to other scenes via predefined transition functions</p>
+<!-- source: http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts -->
+</div>
+<div class="slide" id="ccnode">
+<h1>CCNode</h1>
+<p class="incremental">Base class for almost every Cocos object type</p>
+<p class="incremental">Defines many standard properties like z index, position, dimensions</p>
+<p class="incremental">Since all classes inherit from CCNode, it's easy to create graphical tree structures</p>
+</div>
+<div class="slide" id="cclayer">
+<h1>CCLayer</h1>
+<p>A scene consists of several layers, each z-indexed to create a stacking structure</p>
+<img alt="img/layers.png" src="img/layers.png" />
+<p>Layers handle user input (touch, accelerometer) and contain sprites, layers (other Nodes)</p>
+<!-- source: http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts -->
+</div>
+<div class="slide" id="ccsprites">
+<h1>CCSprites</h1>
+<p class="incremental">Abstraction built around a 2D image drawn to the screen by OpenGL ES</p>
+<p class="incremental">Knows its position in a left-handed coordinate system with the origin at bottom-left</p>
+<p class="incremental">Can be instantiated with a single image (bad) or with a spritesheet image/plist combination (good)</p>
+</div>
+<div class="slide" id="why-spritesheets">
+<h1>Why Spritesheets?</h1>
+<p class="incremental">Underneath the abstraction, OpenGL loads each image you tell Cocos2D about as an individual texture</p>
+<p class="incremental">Textures are essentially raw image data that OpenGL knows how to draw on geometry</p>
+<p class="incremental">and they're very memory-intensive</p>
+<p class="incremental">The fewer images you give to Cocos2D, the better</p>
+<!-- example of expensive: the Playstation Vita can only handle ~200 512x512 textures in memory at one time -->
+</div>
+<div class="slide" id="ccspritebatchnode">
+<h1>CCSpriteBatchNode</h1>
+<p class="incremental">Solution: put all of our sprites in one big image file, load it as a texture, and have OpenGL cut the sprites out of that texture as needed</p>
+<p class="incremental">Zwoptex - sprite packing tool</p>
+<p class="incremental">Creates a .png image containing all sprites</p>
+<p class="incremental">Also creates a .plist defining the bounding boxes around sprites, complete with the original filenames</p>
+</div>
+<div class="slide" id="loading-a-spritesheet">
+<h1>Loading a spritesheet</h1>
+<p>This allows us to do things like</p>
+<div class="highlight"><pre><span class="p">[[</span><span class="n">CCSpriteFrameCache</span> <span class="n">sharedSpriteFrameCache</span><span class="p">]</span> <span class="nl">addSpriteFramesWithFile:</span> <span class="s">@&quot;my.plist&quot;</span><span class="p">];</span>
+<span class="n">CCSpriteBatchNode</span> <span class="o">*</span><span class="n">spritesheet</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCSpriteBatchNode</span> <span class="nl">batchNodeWithFile:</span><span class="s">@&quot;my.png&quot;</span><span class="p">];</span>
+<span class="n">CCSprite</span> <span class="o">*</span><span class="n">mySprite</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCSprite</span> <span class="nl">spriteWithSpriteFrameName:</span><span class="s">@&quot;dummy.png&quot;</span><span class="p">];</span>  <span class="c1">//*</span>
+</pre></div>
+<p>Tell cocos about the sprite frames plist, then give it the png image to slice up</p>
+<p>We can then reference the sprite images by name!</p>
+<p>Also supports uniform spritesheets (those without accompanying metadata)</p>
+</div>
+<div class="slide" id="gotchas">
+<h1>Gotchas</h1>
+<p>You can load multiple spritesheets at once, but beware namespace collisions</p>
+<p>A sprite frame whose name is already in the cache will be overwritten</p>
+<p>Leads to unpredictable results</p>
+<p>Sprite frames are cached locally, so frame/image mismatches can occur:</p>
+<img alt="img/bugs.png" src="img/bugs.png" />
+</div>
+<div class="slide" id="playing-with-time">
+<h1>Playing with Time</h1>
+<p class="incremental">CCAction and CCAnimation are the two main base classes</p>
+<p class="incremental">CCAnimation is a container of animation frame images (think flipbook)</p>
+<p class="incremental">CCAction is a more general time handling class</p>
+</div>
+<div class="slide" id="creating-an-animation-action">
+<h1>Creating an Animation Action</h1>
+<div class="highlight"><pre><span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
+<span class="n">CCAnimation</span> <span class="o">*</span><span class="n">anim</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCAnimation</span> <span class="nl">animationWithFrames:</span><span class="n">frames</span> <span class="nl">delay:</span><span class="mf">0.1f</span><span class="p">];</span>
+<span class="n">CCAction</span> <span class="o">*</span><span class="n">action</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCAnimate</span> <span class="nl">actionWithAnimation:</span><span class="n">anim</span> <span class="nl">restoreOriginalFrame:</span><span class="n">YES</span><span class="p">];</span>
+<span class="p">[</span><span class="n">mySprite</span> <span class="nl">runAction:</span><span class="n">action</span><span class="p">];</span>
+<span class="c1">//*</span>
+</pre></div>
+<p>Create an array of spriteframes, create animation, create action, run the action</p>
+</div>
+<div class="slide" id="sequential-actions">
+<h1>Sequential Actions</h1>
+<div class="highlight"><pre><span class="p">[</span><span class="n">sprite</span> <span class="nl">runAction:</span>
+    <span class="p">[</span><span class="n">CCSequence</span> <span class="nl">actions:</span><span class="n">myAction</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">CCCallFuncN</span> <span class="nl">actionWithTarget:</span><span class="n">self</span> <span class="nl">selector:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">runLoop:</span><span class="p">)],</span>
+    <span class="nb">nil</span><span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+<p>Here, we run a compound action (CCSequence) that plays an action, then calls the runLoop function</p>
+</div>
+<div class="slide" id="touch-input">
+<h1>Touch Input</h1>
+<p>Cocos provides callbacks for touch beginnings, movement, and endings.</p>
+<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">ccTouchesEnded:</span><span class="p">(</span><span class="n">NSSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">touches</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="n">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span><span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span> <span class="n">UITouch</span> <span class="o">*</span><span class="n">touch</span> <span class="k">in</span> <span class="n">touches</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">CGPoint</span> <span class="n">location</span> <span class="o">=</span> <span class="p">[</span><span class="n">touch</span> <span class="nl">locationInView:</span> <span class="p">[</span><span class="n">touch</span> <span class="n">view</span><span class="p">]];</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CCDirector</span> <span class="n">sharedDirector</span><span class="p">]</span> <span class="nl">convertToGL:</span> <span class="n">location</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>  <span class="c1">//*</span>
+</pre></div>
+<p>Example of getting the Cocos coordinate space location of the touch events currently ending</p>
+</div>
+<div class="slide" id="id1">
+<h1>Box2D</h1>
+<p class="incremental">Recall: C++ rigid body dynamics simulation</p>
+<p class="incremental">Less of an API, more of a state machine</p>
+<p class="incremental">First problem: interfacing Objective-C Cocos2d code with C++ Box2d</p>
+</div>
+<div class="slide" id="box2d-api-overview">
+<h1>Box2D API Overview</h1>
+<p class="incremental">Main entry point to the simulation: b2World class</p>
+<p class="incremental"><strong>World</strong> contains <strong>bodies</strong> - containers for fixtures</p>
+<p class="incremental"><strong>Fixtures</strong> are main workhorses - convex polygons with restitution, density, mass, friction, etc.</p>
+<p class="incremental"><strong>Joints</strong> connect bodies to each other</p>
+<p class="incremental"><strong>Impulses</strong> are forces that can be applied to bodies</p>
+</div>
+<div class="slide" id="b2world">
+<h1>b2World</h1>
+<p class="incremental">Contains an iterator over all of the bodies it contains</p>
+<p class="incremental">Defines gravity and other global properties</p>
+</div>
+<div class="slide" id="b2body">
+<h1>b2Body</h1>
+<p class="incremental">Container for fixtures, which are the ones that do the colliding</p>
+<p class="incremental">Properties include type (dynamic/static), position, and userdata</p>
+</div>
+<div class="slide" id="making-box-and-cocos-play-together">
+<h1>Making Box and Cocos Play Together</h1>
+<p>Single most important snippet to understand</p>
+<div class="highlight"><pre><span class="k">for</span> <span class="p">(</span><span class="n">b2Body</span><span class="o">*</span> <span class="n">b</span> <span class="o">=</span> <span class="n">world</span><span class="o">-&gt;</span><span class="n">GetBodyList</span><span class="p">();</span> <span class="n">b</span><span class="p">;</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">-&gt;</span><span class="n">GetNext</span><span class="p">()){</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">GetUserData</span><span class="p">()</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">){</span>
+        <span class="n">CCSprite</span> <span class="o">*</span><span class="n">myActor</span> <span class="o">=</span> <span class="p">(</span><span class="n">CCSprite</span><span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">GetUserData</span><span class="p">();</span>
+        <span class="n">myActor</span><span class="p">.</span><span class="n">position</span> <span class="o">=</span> <span class="n">CGPointMake</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">GetPosition</span><span class="p">().</span><span class="n">x</span><span class="o">*</span><span class="n">PTM_RATIO</span><span class="p">,</span>
+                    <span class="n">b</span><span class="o">-&gt;</span><span class="n">GetPosition</span><span class="p">().</span><span class="n">y</span><span class="o">*</span><span class="n">PTM_RATIO</span><span class="p">);</span>
+        <span class="n">myActor</span><span class="p">.</span><span class="n">rotation</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">CC_RADIANS_TO_DEGREES</span><span class="p">(</span><span class="n">b</span><span class="o">-&gt;</span><span class="n">GetAngle</span><span class="p">());</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="c1">//*</span>
+</pre></div>
+<p>Set a sprite as the userData of its corresponding body, then update its position each frame based on the body</p>
+</div>
+<div class="slide" id="other-gotchas">
+<h1>Other Gotchas</h1>
+<p class="incremental">Box2d and Cocos2d both use left-handed coordinate systems with the origin at the bottom-left</p>
+<p class="incremental">However, Cocos2D deals in pixels and Box2d uses meters</p>
+<p class="incremental">Setting a sprite's position to 200x200 meters will put it far offscreen</p>
+<p class="incremental">Define a constant PTM_RATIO = 32 -&gt; 32 pixels to a meter</p>
+<p class="incremental">Divide/multiply by this to convert units</p>
+</div>
+<div class="slide" id="defining-a-class-hotdog-h">
+<h1>Defining a class (HotDog.h)</h1>
+<p>Enforced separation of &#64;interface and &#64;implementation</p>
+<div class="highlight"><pre><span class="k">@interface</span> <span class="nc">HotDog</span> : <span class="nc">NSObject</span> <span class="p">{</span>
+    <span class="n">b2World</span> <span class="o">*</span><span class="n">world</span><span class="p">;</span>
+    <span class="n">CCSpriteBatchNode</span> <span class="o">*</span><span class="n">spritesheet</span><span class="p">;</span>
+    <span class="n">CGSize</span> <span class="n">winSize</span><span class="p">;</span>
+    <span class="n">b2Body</span> <span class="o">*</span><span class="n">worldBody</span><span class="p">;</span>
+
+    <span class="n">CCSprite</span> <span class="o">*</span><span class="n">sprite1</span><span class="p">;</span>
+    <span class="kt">BOOL</span> <span class="n">touched</span><span class="p">,</span> <span class="n">exploding</span><span class="p">,</span> <span class="n">grabbed</span><span class="p">,</span> <span class="n">hasTouchedHead</span><span class="p">;</span>
+    <span class="n">ccColor3B</span> <span class="n">_color_pink</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="o">-</span><span class="p">(</span><span class="n">HotDog</span> <span class="o">*</span><span class="p">)</span><span class="nl">initWithBody:</span><span class="p">(</span><span class="n">NSValue</span> <span class="o">*</span><span class="p">)</span><span class="n">b</span><span class="p">;</span>
+<span class="k">-</span><span class="p">(</span><span class="n">NSValue</span> <span class="o">*</span><span class="p">)</span><span class="nf">getBody</span><span class="p">;</span> <span class="c1">//*</span>
+
+<span class="k">@end</span>
+</pre></div>
+<!-- a typical class representing a game object -->
+</div>
+<div class="slide" id="useful-links">
+<h1>Useful links</h1>
+<p>Box2d <a class="reference external" href="http://www.box2d.org/manual.html">manual</a></p>
+<p>Cocos2d <a class="reference external" href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:index">guide</a></p>
+</div>
+</div>
+</body>
+</html>
