@@ -90,7 +90,7 @@ Cocos2D
 
     Built on OpenGL ES (handles the actual drawing)
 
-    Intergrates box2d
+    Integrates box2d
 
     Free and open-source(!!) - but read the license
 
@@ -103,11 +103,13 @@ Box2D
 
     Implemented as a C++ library - this works since Objective-C is a *strict superset* of C++
 
-    Main purpose is to perform phyiscal calculations very fast
+    Main purpose is to perform physical calculations very fast
 
     Contains modules for drawing the simulated objects to the screen (DebugDraw)
 
     Also free and open-source
+
+.. QUESTIONS!??
 
 Cocos2D API Overview
 --------------------
@@ -278,6 +280,8 @@ Cocos provides callbacks for touch beginnings, movement, and endings.
 
 Example of getting the Cocos coordinate space location of the touch events currently ending
 
+.. QUESTIONS!??
+
 Box2D
 -----
 
@@ -381,6 +385,8 @@ Collision Bits
 On collision, the mask and category bits of each fixture are &'ed
 
 If the result is nonzero, collision is registered
+
+.. QUESTIONS!??
 
 Making Box and Cocos Play Together
 ----------------------------------
