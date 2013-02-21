@@ -140,7 +140,7 @@ CCNode
 
 .. class:: incremental
 
-    Base class for almost every Cocos object
+    Base class for many Cocos objects
 
     Defines many standard properties like z index, position, dimensions
 
