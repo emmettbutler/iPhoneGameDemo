@@ -25,7 +25,7 @@ Open Terminal and type
     cd git
     git clone https://github.com/emmett9001/iPhoneGameDemo.git
 
-Open Finder, navigate to /<yourname/>/git/iPhoneGameDemo
+Open Finder, navigate to yourname/git/iPhoneGameDemo
 
 Open iPhoneGameDemo.git with XCode
 
