@@ -315,11 +315,65 @@ b2World
 b2Body
 ------
 
+Container for fixtures, which are the ones that do the colliding
+
+Properties include type (dynamic/static), position, and userdata
+
+.. sourcecode:: objective-c
+
+    b2BodyDef boxBodyDef;
+    boxBodyDef.type = b2_dynamicBody;
+    boxBodyDef.position.Set(location.x/PTM_RATIO, location.y/PTM_RATIO);
+    boxBodyDef.userData = sprite;
+    boxBody = world->CreateBody(&boxBodyDef);
+
+Creating a body from a definition
+
+b2Fixture
+---------
+
+Have shapes, perform collisions, bounce, slide
+
+Many per body
+
+.. sourcecode:: c++
+
+    b2FixtureDef boxShapeDef;
+    boxShapeDef.shape = &boxShape;
+    boxShapeDef.density = 10.0f;
+    boxShapeDef.friction= 0.4f;
+    boxShapeDef.restitution = 0.9f;
+
+Collision Filtering
+-------------------
+
 .. class:: incremental
 
-    Container for fixtures, which are the ones that do the colliding
+    Boolean flags are used for collision filtering
 
-    Properties include type (dynamic/static), position, and userdata
+    Fixtures have a category and a mask
+
+    Category: "what am I"
+
+    Mask: "What can I collide with?"
+
+Collision Bits
+--------------
+
+.. sourcecode:: c++
+
+    enum _entityCategory {
+        BOUNDARY = 0x0001,  // 001
+        BOX =     0x0002,   // 010
+        BALL =     0x0004,  // 100
+    };
+
+    boxShapeDef.filter.categoryBits = BOX;
+    boxShapeDef.filter.maskBits = BALL | BOUNDARY;
+
+On collision, the mask and category bits of each fixture are &'ed
+
+If the result is nonzero, collision is registered
 
 Making Box and Cocos Play Together
 ----------------------------------
@@ -386,5 +440,22 @@ Box2d manual_
 
 Cocos2d guide_
 
+Ray Wenderlich's blog_
+
+Box2d tutorial_
+
 .. _manual: http://www.box2d.org/manual.html
 .. _guide: http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:index
+.. _blog: http://www.raywenderlich.com/
+.. _tutorial: http://www.iforce2d.net/b2dtut/
+
+Fin!
+----
+
+I'm your host, Emmett Butler
+
+http://github.com/emmett9001
+
+http://emmettbutler.com
+
+http://headsuphotdogs.com

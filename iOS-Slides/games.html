@@ -330,8 +330,47 @@
 </div>
 <div class="slide" id="b2body">
 <h1>b2Body</h1>
-<p class="incremental">Container for fixtures, which are the ones that do the colliding</p>
-<p class="incremental">Properties include type (dynamic/static), position, and userdata</p>
+<p>Container for fixtures, which are the ones that do the colliding</p>
+<p>Properties include type (dynamic/static), position, and userdata</p>
+<div class="highlight"><pre><span class="n">b2BodyDef</span> <span class="n">boxBodyDef</span><span class="p">;</span>
+<span class="n">boxBodyDef</span><span class="p">.</span><span class="n">type</span> <span class="o">=</span> <span class="n">b2_dynamicBody</span><span class="p">;</span>
+<span class="n">boxBodyDef</span><span class="p">.</span><span class="n">position</span><span class="p">.</span><span class="n">Set</span><span class="p">(</span><span class="n">location</span><span class="p">.</span><span class="n">x</span><span class="o">/</span><span class="n">PTM_RATIO</span><span class="p">,</span> <span class="n">location</span><span class="p">.</span><span class="n">y</span><span class="o">/</span><span class="n">PTM_RATIO</span><span class="p">);</span>
+<span class="n">boxBodyDef</span><span class="p">.</span><span class="n">userData</span> <span class="o">=</span> <span class="n">sprite</span><span class="p">;</span>
+<span class="n">boxBody</span> <span class="o">=</span> <span class="n">world</span><span class="o">-&gt;</span><span class="n">CreateBody</span><span class="p">(</span><span class="o">&amp;</span><span class="n">boxBodyDef</span><span class="p">);</span>
+</pre></div>
+<p>Creating a body from a definition</p>
+</div>
+<div class="slide" id="b2fixture">
+<h1>b2Fixture</h1>
+<p>Have shapes, perform collisions, bounce, slide</p>
+<p>Many per body</p>
+<div class="highlight"><pre><span class="n">b2FixtureDef</span> <span class="n">boxShapeDef</span><span class="p">;</span>
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">shape</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">boxShape</span><span class="p">;</span>
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">density</span> <span class="o">=</span> <span class="mf">10.0f</span><span class="p">;</span>
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">friction</span><span class="o">=</span> <span class="mf">0.4f</span><span class="p">;</span>
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">restitution</span> <span class="o">=</span> <span class="mf">0.9f</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="slide" id="collision-filtering">
+<h1>Collision Filtering</h1>
+<p class="incremental">Boolean flags are used for collision filtering</p>
+<p class="incremental">Fixtures have a category and a mask</p>
+<p class="incremental">Category: &quot;what am I&quot;</p>
+<p class="incremental">Mask: &quot;What can I collide with?&quot;</p>
+</div>
+<div class="slide" id="collision-bits">
+<h1>Collision Bits</h1>
+<div class="highlight"><pre><span class="k">enum</span> <span class="n">_entityCategory</span> <span class="p">{</span>
+    <span class="n">BOUNDARY</span> <span class="o">=</span> <span class="mh">0x0001</span><span class="p">,</span>  <span class="c1">// 001</span>
+    <span class="n">BOX</span> <span class="o">=</span>     <span class="mh">0x0002</span><span class="p">,</span>   <span class="c1">// 010</span>
+    <span class="n">BALL</span> <span class="o">=</span>     <span class="mh">0x0004</span><span class="p">,</span>  <span class="c1">// 100</span>
+<span class="p">};</span>
+
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">filter</span><span class="p">.</span><span class="n">categoryBits</span> <span class="o">=</span> <span class="n">BOX</span><span class="p">;</span>
+<span class="n">boxShapeDef</span><span class="p">.</span><span class="n">filter</span><span class="p">.</span><span class="n">maskBits</span> <span class="o">=</span> <span class="n">BALL</span> <span class="o">|</span> <span class="n">BOUNDARY</span><span class="p">;</span>
+</pre></div>
+<p>On collision, the mask and category bits of each fixture are &amp;'ed</p>
+<p>If the result is nonzero, collision is registered</p>
 </div>
 <div class="slide" id="making-box-and-cocos-play-together">
 <h1>Making Box and Cocos Play Together</h1>
@@ -380,6 +419,15 @@
 <h1>Useful links</h1>
 <p>Box2d <a class="reference external" href="http://www.box2d.org/manual.html">manual</a></p>
 <p>Cocos2d <a class="reference external" href="http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:index">guide</a></p>
+<p>Ray Wenderlich's <a class="reference external" href="http://www.raywenderlich.com/">blog</a></p>
+<p>Box2d <a class="reference external" href="http://www.iforce2d.net/b2dtut/">tutorial</a></p>
+</div>
+<div class="slide" id="fin">
+<h1>Fin!</h1>
+<p>I'm your host, Emmett Butler</p>
+<p><a class="reference external" href="http://github.com/emmett9001">http://github.com/emmett9001</a></p>
+<p><a class="reference external" href="http://emmettbutler.com">http://emmettbutler.com</a></p>
+<p><a class="reference external" href="http://headsuphotdogs.com">http://headsuphotdogs.com</a></p>
 </div>
 </div>
 </body>
