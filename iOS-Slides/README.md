@@ -2,7 +2,7 @@
 
 This is a set of slides giving an overview of iOS programming for existing programmers.
 
-Prepared for the 2013 Parse.ly retreat.
+The Objective-C slides were prepared for the 2013 Parse.ly retreat, and the games slides were prepared for a presentation I gave at Pace University in spring 2013.
 
 ## View the slides online
 
