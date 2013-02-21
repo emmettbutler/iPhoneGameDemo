@@ -10,6 +10,10 @@ Slides can be viewed in compiled form at:
 
 http://emmettbutler.com/basic-ios-slides/
 
+and
+
+http://emmettbutler.com/basic-ios-slides/games.html
+
 Note that the slides can be controlled as follows:
 
  * Advance forward / back with the forward and back keys, or left click / right click of the mouse
