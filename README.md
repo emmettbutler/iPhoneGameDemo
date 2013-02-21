@@ -32,6 +32,14 @@ In the top left menu, select iPhone 6.0 simulator
 
 Apple+R (or play button) to test
 
+Directory Structure
+===================
+
+This repository consists of two main parts:
+
+* The `iOS-Slides` directory contains a ReST slide presentation presenting the basics of iOS game dev
+* The `iPhoneGameDemo` directory contains the source code for the demo project
+
 Working with Git
 ================
 
