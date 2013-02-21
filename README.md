@@ -11,7 +11,8 @@ programming and game development.
 Step-by-step
 ============
 
-How to get up and running with this project
+How to get up and running with this project:
+
 Download/update XCode 4 from the mac app store
 
 Download and install Git from http://git-scm.com/download/mac
