@@ -190,7 +190,7 @@
 </div>
 <div class="slide" id="cocos2d">
 <h1>Cocos2D</h1>
-<p class="incremental">Object-oriented library facilitating common game-related graphics needs</p>
+<p class="incremental">Object-oriented library facilitating common game-related graphics tasks</p>
 <p class="incremental">Sprite animation, screen transitions, time-based actions and particle effects are the most prominent</p>
 <p class="incremental">Built on OpenGL ES (handles the actual drawing)</p>
 <p class="incremental">Intergrates box2d</p>
@@ -198,7 +198,7 @@
 </div>
 <div class="slide" id="box2d">
 <h1>Box2D</h1>
-<p class="incremental">State machine (&quot;world&quot;) with input and output &quot;ports&quot;</p>
+<p class="incremental">State machine (&quot;world&quot;) with input and output ports</p>
 <p class="incremental">Implemented as a C++ library - this works since Objective-C is a <em>strict superset</em> of C++</p>
 <p class="incremental">Main purpose is to perform phyiscal calculations very fast</p>
 <p class="incremental">Contains modules for drawing the simulated objects to the screen (DebugDraw)</p>
@@ -206,11 +206,11 @@
 </div>
 <div class="slide" id="cocos2d-api-overview">
 <h1>Cocos2D API Overview</h1>
-<p class="incremental">CCDirector is the main controller singleton - handles scenes and OpenGL communications</p>
-<p class="incremental">A game (handled by CCDirector) consists of one or more CCScenes</p>
-<p class="incremental">Scenes consist of one or more CCLayers</p>
-<p class="incremental">Layers consist of one or more CCSprites</p>
-<p class="incremental"><strong>Generalization</strong>: All of these classes (with the exception of CCDirector) are subclasses of CCNode.</p>
+<p class="incremental"><strong>CCDirector</strong> is the main controller singleton - handles scenes and OpenGL communications</p>
+<p class="incremental">A game (handled by CCDirector) consists of one or more <strong>CCScenes</strong></p>
+<p class="incremental">Scenes consist of one or more <strong>CCLayers</strong></p>
+<p class="incremental">Layers consist of one or more <strong>CCSprites</strong></p>
+<p class="incremental"><strong>Generalization</strong>: All of these classes (with the exception of CCDirector) are subclasses of <strong>CCNode</strong>.</p>
 </div>
 <div class="slide" id="scene-graph">
 <h1>Scene Graph</h1>
@@ -220,21 +220,21 @@
 </div>
 <div class="slide" id="ccnode">
 <h1>CCNode</h1>
-<p class="incremental">Base class for almost every Cocos object type</p>
+<p class="incremental">Base class for almost every Cocos object</p>
 <p class="incremental">Defines many standard properties like z index, position, dimensions</p>
 <p class="incremental">Since all classes inherit from CCNode, it's easy to create graphical tree structures</p>
 </div>
 <div class="slide" id="cclayer">
 <h1>CCLayer</h1>
-<p>A scene consists of several layers, each z-indexed to create a stacking structure</p>
+<p>A scene consists of several layers, each z-indexed to create a stack</p>
 <img alt="img/layers.png" src="img/layers.png" />
 <p>Layers handle user input (touch, accelerometer) and contain sprites, layers (other Nodes)</p>
 <!-- source: http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts -->
 </div>
-<div class="slide" id="ccsprites">
-<h1>CCSprites</h1>
+<div class="slide" id="ccsprite">
+<h1>CCSprite</h1>
 <p class="incremental">Abstraction built around a 2D image drawn to the screen by OpenGL ES</p>
-<p class="incremental">Knows its position in a left-handed coordinate system with the origin at bottom-left</p>
+<p class="incremental">Knows its position in an orthogonal coordinate system with the origin at bottom-left</p>
 <p class="incremental">Can be instantiated with a single image (bad) or with a spritesheet image/plist combination (good)</p>
 </div>
 <div class="slide" id="why-spritesheets">
@@ -259,6 +259,7 @@
 <span class="n">CCSpriteBatchNode</span> <span class="o">*</span><span class="n">spritesheet</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCSpriteBatchNode</span> <span class="nl">batchNodeWithFile:</span><span class="s">@&quot;my.png&quot;</span><span class="p">];</span>
 <span class="n">CCSprite</span> <span class="o">*</span><span class="n">mySprite</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCSprite</span> <span class="nl">spriteWithSpriteFrameName:</span><span class="s">@&quot;dummy.png&quot;</span><span class="p">];</span>  <span class="c1">//*</span>
 </pre></div>
+<!-- isn't objective-c fun? -->
 <p>Tell cocos about the sprite frames plist, then give it the png image to slice up</p>
 <p>We can then reference the sprite images by name!</p>
 <p>Also supports uniform spritesheets (those without accompanying metadata)</p>
@@ -282,8 +283,7 @@
 <div class="highlight"><pre><span class="n">NSMutableArray</span> <span class="o">*</span><span class="n">frames</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSMutableArray</span> <span class="n">array</span><span class="p">];</span>
 <span class="n">CCAnimation</span> <span class="o">*</span><span class="n">anim</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCAnimation</span> <span class="nl">animationWithFrames:</span><span class="n">frames</span> <span class="nl">delay:</span><span class="mf">0.1f</span><span class="p">];</span>
 <span class="n">CCAction</span> <span class="o">*</span><span class="n">action</span> <span class="o">=</span> <span class="p">[</span><span class="n">CCAnimate</span> <span class="nl">actionWithAnimation:</span><span class="n">anim</span> <span class="nl">restoreOriginalFrame:</span><span class="n">YES</span><span class="p">];</span>
-<span class="p">[</span><span class="n">mySprite</span> <span class="nl">runAction:</span><span class="n">action</span><span class="p">];</span>
-<span class="c1">//*</span>
+<span class="p">[</span><span class="n">mySprite</span> <span class="nl">runAction:</span><span class="n">action</span><span class="p">];</span>  <span class="c1">//*</span>
 </pre></div>
 <p>Create an array of spriteframes, create animation, create action, run the action</p>
 </div>
@@ -314,6 +314,7 @@
 <p class="incremental">Recall: C++ rigid body dynamics simulation</p>
 <p class="incremental">Less of an API, more of a state machine</p>
 <p class="incremental">First problem: interfacing Objective-C Cocos2d code with C++ Box2d</p>
+<p class="incremental">End up wrapping box2d pointers in Obj-C NSValues <em>a lot</em></p>
 </div>
 <div class="slide" id="box2d-api-overview">
 <h1>Box2D API Overview</h1>
@@ -388,7 +389,7 @@
 </div>
 <div class="slide" id="other-gotchas">
 <h1>Other Gotchas</h1>
-<p class="incremental">Box2d and Cocos2d both use left-handed coordinate systems with the origin at the bottom-left</p>
+<p class="incremental">Box2d and Cocos2d both use orthogonally-projected coordinate systems with the origin at the bottom-left</p>
 <p class="incremental">However, Cocos2D deals in pixels and Box2d uses meters</p>
 <p class="incremental">Setting a sprite's position to 200x200 meters will put it far offscreen</p>
 <p class="incremental">Define a constant PTM_RATIO = 32 -&gt; 32 pixels to a meter</p>

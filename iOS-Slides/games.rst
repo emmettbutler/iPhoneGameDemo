@@ -84,7 +84,7 @@ Cocos2D
 
 .. class:: incremental
 
-    Object-oriented library facilitating common game-related graphics needs
+    Object-oriented library facilitating common game-related graphics tasks
 
     Sprite animation, screen transitions, time-based actions and particle effects are the most prominent
 
@@ -99,7 +99,7 @@ Box2D
 
 .. class:: incremental
 
-    State machine ("world") with input and output "ports"
+    State machine ("world") with input and output ports
 
     Implemented as a C++ library - this works since Objective-C is a *strict superset* of C++
 
@@ -114,15 +114,15 @@ Cocos2D API Overview
 
 .. class:: incremental
 
-    CCDirector is the main controller singleton - handles scenes and OpenGL communications
+    **CCDirector** is the main controller singleton - handles scenes and OpenGL communications
 
-    A game (handled by CCDirector) consists of one or more CCScenes
+    A game (handled by CCDirector) consists of one or more **CCScenes**
 
-    Scenes consist of one or more CCLayers
+    Scenes consist of one or more **CCLayers**
 
-    Layers consist of one or more CCSprites
+    Layers consist of one or more **CCSprites**
 
-    **Generalization**: All of these classes (with the exception of CCDirector) are subclasses of CCNode.
+    **Generalization**: All of these classes (with the exception of CCDirector) are subclasses of **CCNode**.
 
 Scene Graph
 -----------
@@ -138,7 +138,7 @@ CCNode
 
 .. class:: incremental
 
-    Base class for almost every Cocos object type
+    Base class for almost every Cocos object
 
     Defines many standard properties like z index, position, dimensions
 
@@ -147,7 +147,7 @@ CCNode
 CCLayer
 -------
 
-A scene consists of several layers, each z-indexed to create a stacking structure
+A scene consists of several layers, each z-indexed to create a stack
 
 .. image:: img/layers.png
 
@@ -155,14 +155,14 @@ Layers handle user input (touch, accelerometer) and contain sprites, layers (oth
 
 .. source: http://www.cocos2d-iphone.org/wiki/doku.php/prog_guide:basic_concepts
 
-CCSprites
----------
+CCSprite
+--------
 
 .. class:: incremental
 
     Abstraction built around a 2D image drawn to the screen by OpenGL ES
 
-    Knows its position in a left-handed coordinate system with the origin at bottom-left
+    Knows its position in an orthogonal coordinate system with the origin at bottom-left
 
     Can be instantiated with a single image (bad) or with a spritesheet image/plist combination (good)
 
@@ -205,6 +205,8 @@ This allows us to do things like
     CCSpriteBatchNode *spritesheet = [CCSpriteBatchNode batchNodeWithFile:@"my.png"];
     CCSprite *mySprite = [CCSprite spriteWithSpriteFrameName:@"dummy.png"];  //*
 
+.. isn't objective-c fun?
+
 Tell cocos about the sprite frames plist, then give it the png image to slice up
 
 We can then reference the sprite images by name!
@@ -243,8 +245,7 @@ Creating an Animation Action
     NSMutableArray *frames = [NSMutableArray array];
     CCAnimation *anim = [CCAnimation animationWithFrames:frames delay:0.1f];
     CCAction *action = [CCAnimate actionWithAnimation:anim restoreOriginalFrame:YES];
-    [mySprite runAction:action];
-    //*
+    [mySprite runAction:action];  //*
 
 Create an array of spriteframes, create animation, create action, run the action
 
@@ -288,6 +289,8 @@ Box2D
 
     First problem: interfacing Objective-C Cocos2d code with C++ Box2d
 
+    End up wrapping box2d pointers in Obj-C NSValues *a lot*
+
 Box2D API Overview
 ------------------
 
@@ -306,11 +309,15 @@ Box2D API Overview
 b2World
 -------
 
-.. class:: incremental
+Contains an iterator over all of the bodies it contains
 
-    Contains an iterator over all of the bodies it contains
+Defines gravity and other global properties
 
-    Defines gravity and other global properties
+.. sourcecode:: c++
+
+    b2World *world = new b2World(-30.0f, true);  //*
+
+Sets the gravity of the world
 
 b2Body
 ------
@@ -398,7 +405,7 @@ Other Gotchas
 
 .. class:: incremental
 
-    Box2d and Cocos2d both use left-handed coordinate systems with the origin at the bottom-left
+    Box2d and Cocos2d both use orthogonally-projected coordinate systems with the origin at the bottom-left
 
     However, Cocos2D deals in pixels and Box2d uses meters
 
