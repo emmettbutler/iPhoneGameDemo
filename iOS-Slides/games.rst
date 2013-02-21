@@ -332,7 +332,7 @@ Properties include type (dynamic/static), position, and userdata
     boxBodyDef.type = b2_dynamicBody;
     boxBodyDef.position.Set(location.x/PTM_RATIO, location.y/PTM_RATIO);
     boxBodyDef.userData = sprite;
-    boxBody = world->CreateBody(&boxBodyDef);
+    b2Body *boxBody = world->CreateBody(&boxBodyDef);  //*
 
 Creating a body from a definition
 
