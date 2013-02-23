@@ -27,7 +27,7 @@ Open Terminal and type
 
 Open Finder, navigate to yourname/git/iPhoneGameDemo
 
-Open iPhoneGameDemo.git with XCode
+Open iPhoneGameDemo.xcodeproj with XCode
 
 In the top left menu, select iPhone 6.0 simulator
 
@@ -43,6 +43,11 @@ This repository consists of two main parts:
 
 Working with Git
 ================
+
+If you've already cloned this repository, make sure you're up to date by using
+
+    git stash
+    git pull --rebase origin master
 
 Cloning
 -------
