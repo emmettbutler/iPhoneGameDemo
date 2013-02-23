@@ -24,7 +24,7 @@
 }
 
 - (NSUInteger)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskLandscape;
+    return UIInterfaceOrientationMaskLandscapeLeft;
 }
 
 // Override to allow orientations other than the default portrait orientation.
