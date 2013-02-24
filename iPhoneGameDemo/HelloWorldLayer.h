@@ -14,10 +14,14 @@
     b2Vec2 gravity;
     MyContactListener *contactListener;
     
+    // boolean flags denoting collision filtering categories
+    // these *must* be independent with respect to the boolean AND operation to work properly
+    // that is, the result of ANDing all of these categories together must be 0
+    // you've been warned
     enum _entityCategory {
-		BOUNDARY = 0x0001,
-    	BOX =     0x0002,
-    	BALL =     0x0004,
+		BOUNDARY = 0x0001,  // 0001
+    	BOX =     0x0002,   // 0010
+    	BALL =     0x0004,  // 0100
   	};
     
     enum _tags{

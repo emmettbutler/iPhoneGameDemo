@@ -14,10 +14,12 @@
     if ((self = [super init])){
         CGSize size = [[CCDirector sharedDirector] winSize];
         
+        // create and add a background sprite to the layer
         CCSprite *sprite = [CCSprite spriteWithFile:@"bliss.png"];
         sprite.anchorPoint = CGPointZero;
         [self addChild:sprite z:-1];
         
+        // make some labels, one of which is a button
         CCLabelTTF *label = [CCLabelTTF labelWithString:@"My Awesome iPhone Game!" fontName:@"Marker Felt" fontSize:32.0];
         CCMenuItem *button = [CCMenuItemLabel itemWithLabel:label target:self selector:@selector(switchScene)];
         CCMenu *menu = [CCMenu menuWithItems:button, nil];
@@ -31,7 +33,9 @@
     return self;
 }
 
+// called when the title button is pressed
 - (void)switchScene{
+    // switch the scene (aka screen transition) from this one to [HelloWorldLayer scene], which contains our HelloWorldLayer instance
     CCTransitionRotoZoom *transition = [CCTransitionRotoZoom transitionWithDuration:1.0 scene:[HelloWorldLayer scene]];
     [[CCDirector sharedDirector] replaceScene:transition];
 }
