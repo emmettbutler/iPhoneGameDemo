@@ -8,6 +8,8 @@ more. The iPhoneGameDemo subdirectory contains the project files. The
 iOS-Slides directory contains a supplemental presentation on Objective-C
 programming and game development.
 
+![image](http://emmettbutler.com/img/phone.png)
+
 Step-by-step
 ============
 
